@@ -18,6 +18,7 @@ function Sidebar({ setActiveSection, activeSection }) {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
+  const [showCV, setShowCV] = useState(false);
 
   // Typewriter animation effect
   useEffect(() => {
@@ -49,22 +50,66 @@ function Sidebar({ setActiveSection, activeSection }) {
     setActiveSection(section.toLowerCase());
   };
 
+  // Function to show the CV
+  const handleShowCV = () => {
+    setShowCV(true); // Show the CV
+  };
+
+  // Function to trigger the download
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/images/A4-Resume2.png"; // Path to CV image
+    link.download = "A4-Resume2.png"; // File name for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Function to close the CV view
+  const handleCloseCV = () => {
+    setShowCV(false);
+  };
+
   return (
     <>
-      
+      {/* CV Modal/View */}
+      {showCV && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-auto">
+            <img
+              src="/images/A4-Resume2.png"
+              alt="CV"
+              className="w-full h-auto"
+            />
+            <div className="mt-4 flex gap-4 justify-center">
+              <button
+                onClick={handleDownloadCV}
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center gap-2"
+              >
+                Download Now <FaCloudDownloadAlt className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleCloseCV}
+                className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <main className="flex flex-col md:flex-row gap-10">
         {/* Mobile Top Bar: Only visible on mobile, fixed above nav */}
-      <div className="block md:hidden lg:hidden fixed top-0 left-0 right-0 z-50 bg-white px-4 py-2 shadow text-black">
-        <h1 className="text-xl font-bold">Isiak Quadri Opeyemi</h1>
-        <p className="min-h-[1.5em] text-green-400">
-          {display}
-          <span className="animate-pulse">|</span>
-        </p>
-      </div>
+        <div className="block md:hidden lg:hidden fixed top-0 left-0 right-0 z-50 bg-white px-4 py-2 shadow text-black">
+          <h1 className="text-xl font-bold">Isiak Quadri Opeyemi</h1>
+          <p className="min-h-[1.5em] text-green-400">
+            {display}
+            <span className="animate-pulse">|</span>
+          </p>
+        </div>
         {/* Sidebar content */}
         <nav
-          
-      className="
+          className="
           fixed top-[65px] left-0 right-0 z-40
           flex flex-row md:static md:flex-col
           w-full md:w-auto
@@ -178,15 +223,25 @@ function Sidebar({ setActiveSection, activeSection }) {
               </a>
             </div>
             {/* Download CV content */}
-            <div className="mt-[40px] mb-5 flex flex-col items-center">
+            {/* <div className="mt-[40px] mb-5 flex flex-col items-center">
               <hr className="w-[50%] border-t-2 border-gray-200 mx-auto my-2" />
               <a
-                href="/files/Isiak_Quadri_Opeyemi_CV.pdf"
+                href="images/A4-Resume2.png"
                 download
                 className="py-2 flex gap-3 items-center"
               >
                 Download CV <FaCloudDownloadAlt className="w-5 h-5" />
               </a>
+            </div>
+             */}
+            <div className="mt-[40px] mb-5 flex flex-col items-center">
+              <hr className="w-[50%] border-t-2 border-gray-200 mx-auto my-2" />
+              <button
+                onClick={handleShowCV}
+                className="py-2 flex gap-3 items-center"
+              >
+                Download CV <FaCloudDownloadAlt className="w-5 h-5" />
+              </button>
             </div>
           </main>
         </div>
