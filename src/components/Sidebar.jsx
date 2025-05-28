@@ -238,7 +238,7 @@ function Sidebar({ setActiveSection, activeSection }) {
               <hr className="w-[50%] border-t-2 border-gray-200 mx-auto my-2" />
               <button
                 onClick={handleShowCV}
-                className="py-2 flex gap-3 items-center"
+                className="py-2 flex gap-3 items-center cursor-pointer hover:text-green-300"
               >
                 Download CV <FaCloudDownloadAlt className="w-5 h-5" />
               </button>
