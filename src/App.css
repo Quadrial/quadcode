@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+.btn {
+  @apply animate-bounce focus:animate-none hover:animate-none inline-flex text-sm font-medium bg-green-300 mt-3 px-4 py-2 rounded-lg tracking-wide text-black;
+}
