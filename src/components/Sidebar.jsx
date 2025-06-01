@@ -110,17 +110,16 @@ function Sidebar({ setActiveSection, activeSection }) {
         {/* Sidebar content */}
         <nav
           className="
-          fixed top-[65px] left-0 right-0 z-40
-          flex flex-row md:static md:flex-col
-          w-full md:w-auto
-          h-16 md:h-[300px] lg:h-[300px]
-          bg-slate-700 p-2 md:p-5
-          shadow md:shadow-none
-          items-center
-          overflow-x-auto
-          md:rounded-md
-        
-      "
+    fixed top-[65px] left-0 right-0 z-40
+    flex flex-row md:fixed lg:static
+    w-full md:w-[100px] ml-0 md:ml-10 lg:w-auto
+    h-16 md:h-[300px] lg:h-[300px]
+    bg-slate-700 p-2 md:p-2 lg:p-5
+    shadow md:shadow lg:shadow-none
+    items-center
+    overflow-x-auto
+    md:flex-col md:rounded-md lg:rounded-md
+  "
         >
           <div className="flex flex-row md:flex-col w-full justify-around md:justify-start gap-2">
             <button

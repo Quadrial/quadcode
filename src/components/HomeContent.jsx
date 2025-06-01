@@ -6,7 +6,7 @@ import Contact from "./Contact";
 
 function HomeContent({ activeSection }) {
   return (
-    <div className="p-6 min-h-[500px] lg:min-h-full">
+    <div className="">
       {activeSection === "about" && <About />}
       {activeSection === "resume" && <Resume />}
       {activeSection === "works" && <Works />}
